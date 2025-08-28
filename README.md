@@ -23,7 +23,7 @@
 
 1. **Клонируйте репозиторий:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ilfae/Tuya-Widget
    cd tuya-widget
    ```
 
@@ -162,5 +162,6 @@ npm run dist       # Создание установщика
 MIT License
 
 ## Поддержка
+
 
 Если у вас возникли проблемы или есть предложения по улучшению, создайте issue в репозитории проекта. 

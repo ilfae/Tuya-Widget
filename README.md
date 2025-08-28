@@ -1,5 +1,7 @@
 # Tuya Widget Desktop
 
+https://raw.githubusercontent.com/ilfae/Tuya-Widget/refs/heads/main/image.png
+
 Полноценный виджет для управления умными лампами Tuya на рабочем столе Windows, созданный с использованием Electron.
 
 ## Особенности
@@ -165,5 +167,6 @@ MIT License
 
 
 Если у вас возникли проблемы или есть предложения по улучшению, создайте issue в репозитории проекта. 
+
 
 

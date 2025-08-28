@@ -1,0 +1,37 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3a86ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff006e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bulb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd166;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Фон -->
+  <rect width="256" height="256" rx="48" fill="url(#bg)"/>
+  
+  <!-- Лампочка -->
+  <g transform="translate(48, 40)">
+    <!-- Колба лампочки -->
+    <ellipse cx="80" cy="80" rx="64" ry="80" fill="url(#bulb)" opacity="0.9"/>
+    
+    <!-- Основание лампочки -->
+    <rect x="64" y="140" width="32" height="24" rx="4" fill="#2b2d42"/>
+    
+    <!-- Резьба -->
+    <rect x="60" y="164" width="40" height="12" rx="6" fill="#8d99ae"/>
+    
+    <!-- Нити накаливания -->
+    <path d="M 50 70 Q 80 50 110 70 Q 80 90 50 70" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.8"/>
+    <path d="M 50 90 Q 80 70 110 90 Q 80 110 50 90" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.8"/>
+    
+    <!-- Световое свечение -->
+    <ellipse cx="80" cy="80" rx="56" ry="72" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3"/>
+  </g>
+  
+  <!-- Текст "Tuya" -->
+  <text x="128" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">Tuya</text>
+</svg> 

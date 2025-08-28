@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuya Light Control</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="widget-container">
+    <!-- Заголовок с элементами управления окном -->
+    <header class="widget-header">
+      <div class="header-left">
+        <h1><i class="fas fa-lightbulb"></i> Tuya</h1>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="toggleAuth()" title="Авторизация">
+          <i class="fas fa-key"></i>
+        </button>
+        <button class="icon-btn" onclick="refreshDevices()" title="Обновить">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+        <button class="icon-btn window-control" onclick="toggleAlwaysOnTop()" title="Закрепить">
+          <i class="fas fa-thumbtack"></i>
+        </button>
+        <button class="icon-btn window-control" onclick="minimizeWidget()" title="Свернуть">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button class="icon-btn window-control close-btn" onclick="closeWidget()" title="Закрыть">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Авторизация -->
+    <div class="auth-section" id="authSection" style="display: none;">
+      <div class="auth-form">
+        <input type="text" id="username" placeholder="Логин" class="auth-input">
+        <input type="password" id="password" placeholder="Пароль" class="auth-input">
+        <select id="region" class="auth-select">
+          <option value="44">EU</option>
+          <option value="1">US</option>
+          <option value="86">CN</option>
+        </select>
+        <select id="platform" class="auth-select">
+          <option value="smart_life">Smart Life</option>
+          <option value="tuya">Tuya</option>
+        </select>
+        <div class="auth-buttons">
+          <button class="btn-primary" onclick="doLogin()">Войти</button>
+          <button class="btn-secondary" onclick="importAuth()">Импорт</button>
+        </div>
+        <label class="checkbox-label">
+          <input type="checkbox" id="saveAuth" checked>
+          <span class="checkmark"></span>
+          Сохранить
+        </label>
+      </div>
+      <div id="loginFailed" class="error-message" style="display: none;"></div>
+    </div>
+
+    <!-- Выбор устройства -->
+    <div class="device-section">
+      <select id="deviceSelect" class="device-select">
+        <option value="">Выберите устройство</option>
+      </select>
+    </div>
+
+    <!-- Управление -->
+    <div class="control-section" id="controlSection" style="display: none;">
+      <!-- Информация об устройстве -->
+      <div class="device-info">
+        <div class="device-status">
+          <span class="status-indicator" id="statusIndicator"></span>
+          <span class="device-name" id="deviceName"></span>
+        </div>
+        <div class="device-details">
+          <span class="detail-item">Яркость: <span id="deviceBrightness">-</span></span>
+        </div>
+      </div>
+
+      <!-- Управление яркостью -->
+      <div class="control-group">
+        <div class="control-label">
+          <i class="fas fa-sun"></i>
+          <span>Яркость</span>
+          <span class="control-value" id="brightnessValue">100%</span>
+        </div>
+        <input type="range" id="brightnessSlider" class="slider" min="0" max="100" value="100">
+      </div>
+
+      <!-- Управление цветом -->
+      <div class="control-group">
+        <div class="control-label">
+          <i class="fas fa-palette"></i>
+          <span>Цвет</span>
+          <span class="control-value" id="colorValue">#FFFFFF</span>
+        </div>
+        <input type="range" id="hueSlider" class="slider color-slider" min="0" max="360" value="0">
+      </div>
+
+      <!-- Быстрые действия -->
+      <div class="quick-actions">
+        <button class="quick-btn" onclick="quickAction('on')" title="Включить">
+          <i class="fas fa-power-off"></i>
+        </button>
+        <button class="quick-btn" onclick="quickAction('off')" title="Выключить">
+          <i class="fas fa-power-off"></i>
+        </button>
+        <button class="quick-btn" onclick="quickAction('bright')" title="Ярко">
+          <i class="fas fa-sun"></i>
+        </button>
+        <button class="quick-btn" onclick="quickAction('dim')" title="Тускло">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Состояние загрузки -->
+    <div class="loading" id="loading" style="display: none;">
+      <div class="spinner"></div>
+      <p>Загрузка...</p>
+    </div>
+
+    <!-- Сообщения -->
+    <div class="message-container">
+      <div class="error-message" id="errorMessage"></div>
+      <div class="success-message" id="successMessage"></div>
+    </div>
+
+    <!-- Подсказка о горячих клавишах -->
+    <div class="hotkey-hint">
+      <small>Alt+T - показать/скрыть виджет</small>
+    </div>
+  </div>
+
+  <script src="widget.js"></script>
+</body>
+
+</html>
